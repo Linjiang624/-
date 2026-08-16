@@ -1,0 +1,11 @@
+# 临时文件 / 缓存
+_chrome_profile/
+_plan_tmp.html
+_test_out.pdf
+
+# Node
+node_modules/
+
+# 系统文件
+Thumbs.db
+.DS_Store

@@ -166,3 +166,26 @@ a:hover {
   background-color: white;
   border: 1px solid #e2e8f0;
 }
+
+/* ============ JD 分析器样式 ============ */
+/* 多行输入框 */
+#jd-input {
+  width: 90%;          /* 占大部分宽度 */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 15px;
+  font-family: "Microsoft YaHei", sans-serif;
+  resize: vertical;    /* 允许用户拖高 */
+}
+
+/* 分析结果区 */
+#jd-result {
+  text-align: left;        /* 分析结果左对齐，更像文档 */
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 10px;
+  white-space: pre-wrap;   /* 保留换行（AI 返回的分点格式不丢） */
+  line-height: 1.6;
+}

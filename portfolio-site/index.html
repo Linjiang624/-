@@ -24,12 +24,8 @@
 
   <!-- 主体：内容区 -->
   <div class="main">
-    <h2>我的技能</h2>
-    <ul class="skill-list">
-      <li>HTML</li>
-      <li>JavaScript</li>
-      <li>AI 工具开发</li>
-    </ul>
+    <h2 id="skill-title">我的技能</h2>
+    <ul class="skill-list" id="skill-list"></ul>
 
     <h2>联系我</h2>
     <a href="https://github.com/Linjiang624">我的 GitHub</a>
@@ -44,6 +40,27 @@
   </div>
 
   <script>
+      // ===== 用数组 + 循环自动生成技能列表 =====
+  const skills = ["HTML", "JavaScript", "AI 工具开发"];  // 数据
+
+  const skillList = document.querySelector("#skill-list");  // 找空列表
+
+  for (let i = 0; i < skills.length; i++) {
+    const li = document.createElement("li");  // 创建一个 <li> 元素
+    li.textContent = skills[i];               // 把技能名写进去
+    skillList.appendChild(li);                // 把 <li> 挂到列表里
+  }
+
+  // ===== 点击标题折叠/展开技能列表 =====
+  const skillTitle = document.querySelector("#skill-title");  // 找标题
+
+  skillTitle.addEventListener("click", function () {
+    if (skillList.style.display === "none") {
+      skillList.style.display = "flex";   // 如果隐藏着，就显示
+    } else {
+      skillList.style.display = "none";   // 如果显示着，就隐藏
+    }
+  });
   // 找到页面元素（先找好，存进变量）
   const button = document.querySelector("button");
   const input = document.querySelector("input");
@@ -54,6 +71,7 @@
     const message = input.value;          // 读输入框
     header.innerHTML = "<h1>你好，" + message + "！</h1>";  // 写页头
   }
+  
 
   // 绑定点击事件：点击按钮 → 调用 showGreeting 函数
   button.addEventListener("click", showGreeting);

@@ -30,29 +30,6 @@ p {
   line-height: 1.6;
 }
 
-/* 选择器 ul：让列表居中显示 */
-ul {
-  /* 去掉列表前面的小黑点 */
-  list-style: none;
-  /* 内边距归零（浏览器默认会给列表缩进） */
-  padding: 0;
-}
-
-/* 选择器 li：列表每一项 */
-li {
-  /* 背景：白色 */
-  background-color: white;
-  /* 圆角边框 8px */
-  border-radius: 8px;
-  /* 上下外边距 8px */
-  margin: 8px auto;
-  /* 宽度 60%，配合 margin auto 实现居中 */
-  width: 60%;
-  /* 内边距：上下 10px，左右 0 */
-  padding: 10px 0;
-  /* 阴影：让每个技能项像小卡片 */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 /* 技能列表：容器 */
 .skill-list {
   list-style: none;        /* 去掉小黑点 */

@@ -53,6 +53,22 @@ li {
   /* 阴影：让每个技能项像小卡片 */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+/* 技能列表：容器 */
+.skill-list {
+  list-style: none;        /* 去掉小黑点 */
+  padding: 0;
+  display: flex;           /* 弹性布局：让子元素并排 */
+  justify-content: center; /* 水平居中 */
+  gap: 12px;               /* 卡片间距 */
+}
+
+/* 技能列表：每一项 */
+.skill-list li {
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
 /* 选择器 a：链接 */
 a {
@@ -96,4 +112,33 @@ input {
 /* 练习：链接悬停效果——鼠标放上去变橙色 */
 a:hover {
   color: #ff6b35;
+}
+
+/* 页头 */
+.header {
+  background-color: #0f4c81;   /* 深蓝背景 */
+  color: white;                /* 白字 */
+  padding: 40px 20px;
+  border-radius: 12px;         /* 圆角大卡片 */
+}
+
+.header h1 {
+  color: white;                /* 覆盖之前 h1 的深蓝色 */
+  margin: 0;                   /* 去掉浏览器默认间距 */
+}
+
+/* 主体：内容区 */
+.main {
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px 20px;
+  margin: 20px 0;              /* 上下留间距 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* 页脚 */
+.footer {
+  color: #888;
+  font-size: 14px;
+  margin-top: 20px;
 }

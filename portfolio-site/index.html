@@ -47,6 +47,7 @@
     <p>粘贴一段招聘 JD，AI 帮你提取岗位要求：</p>
     <textarea id="jd-input" rows="6" placeholder="把招聘 JD 粘贴到这里……"></textarea>
     <button id="jd-btn">分析 JD</button>
+    <button id="interview-btn">以此 JD 开始模拟面试</button>
     <div id="jd-result">（分析结果会显示在这里）</div>
 
     <h2>联系我</h2>
@@ -149,14 +150,18 @@
     chatBox.scrollTop = chatBox.scrollHeight;     // 自动滚动到底部
   }
 
-  async function askAI() {
+  async function askAI(forceSend) {
     const question = aiInput.value;
-    if (question === "") return;
+    // 普通聊天时：输入为空就拦截；面试开始时（forceSend=true）放行
+    if (question === "" && !forceSend) return;
 
-    addMessage("user", question);                                  // ① 屏幕上显示用户的话
-    chatHistory.push({ role: "user", content: question });         // ② 记入对话历史
-    aiInput.value = "";                                            // ③ 清空输入框
-    aiBtn.disabled = true;                                         // ④ 防重复点击
+    // 面试开始时输入框是空的，自动发送一句"开场白"触发面试官出题
+    const message = question === "" ? "你好，请开始面试" : question;
+
+    addMessage("user", message);                                     // ① 屏幕上显示用户的话
+    chatHistory.push({ role: "user", content: message });            // ② 记入对话历史
+    aiInput.value = "";                                              // ③ 清空输入框
+    aiBtn.disabled = true;                                           // ④ 防重复点击
 
     try {
       const response = await fetch("https://api.deepseek.com/chat/completions", {
@@ -241,6 +246,36 @@
   }
 
   jdBtn.addEventListener("click", analyzeJD);
+
+  // ===== V3：模拟面试——AI 扮演面试官，根据 JD 出题 =====
+  const interviewBtn = document.querySelector("#interview-btn");
+
+  interviewBtn.addEventListener("click", function () {
+    const jd = jdInput.value;
+    if (jd === "") {
+      jdResult.textContent = "请先粘贴 JD，再开始面试";
+      return;
+    }
+
+    // 换掉聊天历史：清空旧的，写入"面试官"设定 + JD
+    chatHistory.length = 0;   // 清空数组
+    chatHistory.push({
+      role: "system",
+      content: "你是资深技术面试官。根据以下 JD 对求职者进行模拟面试：\n" +
+               "规则：\n" +
+               "1. 一次只问一个问题\n" +
+               "2. 根据对方的回答追问细节或指出不足\n" +
+               "3. 全部问题问完后，对方说'结束'时，给出总结评价和打分（满分 100）\n" +
+               "JD 内容：\n" + jd
+    });
+
+    chatBox.innerHTML = "";   // 清空屏幕上的旧聊天记录
+    jdResult.textContent = "面试开始！请在聊天窗口回答面试官的问题。";
+
+    // 让 AI 出第一道题（forceSend=true：即使输入框为空也放行）
+    askAI(true);              // 复用！它会把 system 里的 JD 一起发给 AI
+    aiInput.placeholder = "回答面试官的问题……";
+  });
   </script>
 </body>
 

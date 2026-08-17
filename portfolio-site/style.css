@@ -189,3 +189,9 @@ a:hover {
   white-space: pre-wrap;   /* 保留换行（AI 返回的分点格式不丢） */
   line-height: 1.6;
 }
+
+/* 模拟面试按钮 */
+#interview-btn {
+  background-color: #e63946;   /* 红色系，区分主按钮 */
+  margin-left: 8px;
+}

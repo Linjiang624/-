@@ -9,6 +9,9 @@ node_modules/
 # 密钥文件（绝不上传！）
 portfolio-site/config.js
 
+# 私有资料文件夹（绝不上传！）
+私有资料/
+
 # 系统文件
 Thumbs.db
 .DS_Store

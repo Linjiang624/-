@@ -155,6 +155,12 @@
     // 普通聊天时：输入为空就拦截；面试开始时（forceSend=true）放行
     if (question === "" && !forceSend) return;
 
+    // 线上版没有密钥时给出友好提示（而不是报错）
+    if (typeof DEEPSEEK_API_KEY === "undefined") {
+      addMessage("ai", "演示模式：当前是线上展示版，AI 功能需在本地配置密钥后体验。");
+      return;
+    }
+
     // 面试开始时输入框是空的，自动发送一句"开场白"触发面试官出题
     const message = question === "" ? "你好，请开始面试" : question;
 
@@ -205,6 +211,12 @@
     const jd = jdInput.value;
     if (jd === "") {
       jdResult.textContent = "请先粘贴一段 JD";
+      return;
+    }
+
+    // 线上版没有密钥时给出友好提示
+    if (typeof DEEPSEEK_API_KEY === "undefined") {
+      jdResult.textContent = "演示模式：当前是线上展示版，JD 分析需在本地配置密钥后体验。";
       return;
     }
 

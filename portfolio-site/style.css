@@ -1,0 +1,99 @@
+/* ============ 求职主页样式表 ============ */
+/* 格式：选择器 { 属性: 值; 属性: 值; } */
+
+/* 选择器 body：选中整个页面 */
+body {
+  /* 背景色：浅灰蓝 */
+  background-color: #f0f4f8;
+  /* 字体：优先微软雅黑，没有就用系统默认 */
+  font-family: "Microsoft YaHei", sans-serif;
+  /* 文字颜色：深灰 */
+  color: #333;
+  /* 文字居中 */
+  text-align: center;
+  /* 上下留 40px 空白，左右自动（配合宽度居中） */
+  padding: 40px 20px;
+}
+
+/* 选择器 h1：选中所有一级标题 */
+h1 {
+  /* 深蓝色 */
+  color: #0f4c81;
+  /* 字号 36px（px = 像素） */
+  font-size: 36px;
+}
+
+/* 选择器 p：选中所有段落 */
+p {
+  font-size: 18px;
+  /* 行高 1.6 倍，文字不挤在一起 */
+  line-height: 1.6;
+}
+
+/* 选择器 ul：让列表居中显示 */
+ul {
+  /* 去掉列表前面的小黑点 */
+  list-style: none;
+  /* 内边距归零（浏览器默认会给列表缩进） */
+  padding: 0;
+}
+
+/* 选择器 li：列表每一项 */
+li {
+  /* 背景：白色 */
+  background-color: white;
+  /* 圆角边框 8px */
+  border-radius: 8px;
+  /* 上下外边距 8px */
+  margin: 8px auto;
+  /* 宽度 60%，配合 margin auto 实现居中 */
+  width: 60%;
+  /* 内边距：上下 10px，左右 0 */
+  padding: 10px 0;
+  /* 阴影：让每个技能项像小卡片 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 选择器 a：链接 */
+a {
+  color: #e63946;
+  /* 去掉下划线 */
+  text-decoration: none;
+  /* 加粗 */
+  font-weight: bold;
+}
+
+/* 选择器 img：图片 */
+img {
+  /* 圆形裁剪 */
+  border-radius: 50%;
+  /* 四周留白 */
+  margin: 20px;
+}
+
+/* 选择器 button：按钮 */
+button {
+  background-color: #0f4c81;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  /* 上下 10px 左右 24px */
+  padding: 10px 24px;
+  /* 字号 */
+  font-size: 16px;
+  /* 鼠标悬停时变成小手 */
+  cursor: pointer;
+}
+
+/* 选择器 input：输入框 */
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* 练习：链接悬停效果——鼠标放上去变橙色 */
+a:hover {
+  color: #ff6b35;
+}

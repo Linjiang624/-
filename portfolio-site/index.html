@@ -34,7 +34,7 @@
     <h2>联系我</h2>
     <a href="https://github.com/Linjiang624">我的 GitHub</a>
     <img src="https://picsum.photos/200" alt="头像">
-    <input type="text" placeholder="2974395399@qq.com">
+    <input type="text" placeholder="你的名字">
     <button>提交</button>
   </div>
 
@@ -42,6 +42,22 @@
   <div class="footer">
     <p>© 2026 江会荣 · 用 90 天改变自己</p>
   </div>
+
+  <script>
+  // 找到页面元素（先找好，存进变量）
+  const button = document.querySelector("button");
+  const input = document.querySelector("input");
+  const header = document.querySelector(".header");
+
+  // 定义一个函数：根据名字生成问候语并显示
+  function showGreeting() {
+    const message = input.value;          // 读输入框
+    header.innerHTML = "<h1>你好，" + message + "！</h1>";  // 写页头
+  }
+
+  // 绑定点击事件：点击按钮 → 调用 showGreeting 函数
+  button.addEventListener("click", showGreeting);
+  </script>
 </body>
 
 

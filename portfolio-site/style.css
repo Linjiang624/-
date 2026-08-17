@@ -119,3 +119,50 @@ a:hover {
   font-size: 14px;
   margin-top: 20px;
 }
+
+/* ============ 聊天窗口样式 ============ */
+/* 聊天容器：固定高度，超出滚动 */
+#chat-box {
+  text-align: left;
+  max-height: 320px;          /* 最高 320px */
+  overflow-y: auto;           /* 超出就滚动 */
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0;
+  background: #f8fafc;
+}
+
+/* 输入区：横向排列 */
+#chat-input-area {
+  display: flex;              /* 并排 */
+  gap: 8px;
+}
+
+/* 输入框撑满剩余宽度 */
+#chat-input-area input {
+  flex: 1;                    /* 占满剩余空间 */
+}
+
+/* 气泡通用样式 */
+.chat-msg {
+  margin: 8px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 80%;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+/* 用户消息：蓝色气泡，靠右 */
+.chat-msg.user {
+  background-color: #0f4c81;
+  color: white;
+  margin-left: auto;          /* 推向右边的关键 */
+}
+
+/* AI 消息：白色气泡，靠左 */
+.chat-msg.ai {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+}

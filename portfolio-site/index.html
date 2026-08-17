@@ -27,11 +27,15 @@
     <h2 id="skill-title">我的技能</h2>
     <ul class="skill-list" id="skill-list"></ul>
 
+    <h2>每日名言</h2>
+    <p id="quote">点击按钮获取一句名言</p>
+    <button id="quote-btn">换一句</button>
+
     <h2>联系我</h2>
     <a href="https://github.com/Linjiang624">我的 GitHub</a>
     <img src="https://picsum.photos/200" alt="头像">
     <input type="text" placeholder="你的名字">
-    <button>提交</button>
+    <button id="submit-btn">提交</button>
   </div>
 
   <!-- 页脚 -->
@@ -62,7 +66,7 @@
     }
   });
   // 找到页面元素（先找好，存进变量）
-  const button = document.querySelector("button");
+  const button = document.querySelector("#submit-btn");
   const input = document.querySelector("input");
   const header = document.querySelector(".header");
 
@@ -75,6 +79,28 @@
 
   // 绑定点击事件：点击按钮 → 调用 showGreeting 函数
   button.addEventListener("click", showGreeting);
+
+  // ===== 每日名言功能 =====
+  const quoteBtn = document.querySelector("#quote-btn");
+  const quote = document.querySelector("#quote");
+
+  function getQuote() {
+    // 一言 API（国内稳定）：每次请求返回一句随机名言
+    fetch("https://v1.hitokoto.cn/")
+      .then(res => res.json())       // 解析响应为 JSON
+      .then(data => {
+        // 一言返回的字段：hitokoto=句子，from=出处
+        quote.textContent = data.hitokoto + " —— " + data.from;
+      })
+      .catch(err => {
+        // 网络出错时显示提示，而不是悄悄失败
+        quote.textContent = "获取失败，请检查网络";
+        console.log(err);
+      });
+  }
+
+  // 点击"换一句"按钮 → 获取新名言
+  quoteBtn.addEventListener("click", getQuote);
   </script>
 </body>
 

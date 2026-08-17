@@ -6,6 +6,9 @@ _test_out.pdf
 # Node
 node_modules/
 
+# 密钥文件（绝不上传！）
+portfolio-site/config.js
+
 # 系统文件
 Thumbs.db
 .DS_Store
